@@ -38,8 +38,21 @@ namespace ToolBag
                 return index;
             }
         }
+
+        public bool HasWindow
+        {
+            get
+            {
+                return (GetType().GetMethod("ShowWindow")?.DeclaringType != typeof(ToolBagBaseData));
+            }
+        }
         
         public virtual void ShowGUI()
+        {
+            
+        }
+
+        public virtual void ShowWindow()
         {
             
         }

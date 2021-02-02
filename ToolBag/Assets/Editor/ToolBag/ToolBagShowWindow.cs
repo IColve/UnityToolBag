@@ -50,12 +50,21 @@ namespace ToolBag
             
             if (!isShowList)
             {
+                if (GUILayout.Button("窗口面板"))
+                {
+                    ToolBagDetailWindow.ShowWindow();
+                }
+                
+                GUILayout.Space(2);
+                
                 if (GUILayout.Button("打开编辑"))
                 {
                     ToolBagManager.SaveToolDataStatus(new ToolSaveData("编辑面板", true));
                 }
             }
             
+            GUILayout.Space(10);
+
             for (int i = 0; i < toolBagDataList.Count; i++)
             {
                 if (!toolBagDataList[i].IsShow || (isShowList && i != 0))
@@ -64,6 +73,7 @@ namespace ToolBag
                 }
                 
                 GUILayout.TextArea(toolBagDataList[i].Name, new GUIStyle("DefaultCenteredText"){fontStyle = FontStyle.Bold});
+
                 toolBagDataList[i].ShowGUI();
                 GUILayout.Space(2);
             }
