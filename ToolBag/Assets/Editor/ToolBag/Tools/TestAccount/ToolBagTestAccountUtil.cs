@@ -7,7 +7,7 @@ namespace ToolBag.TestAccount
 {
     public class ToolBagTestAccountUtil : MonoBehaviour
     {
-        private const string CTestAccountMainKey = "CTestAccount";
+        private const string CTestAccountMainKey = "ToolBagTestAccountKey";
 
         public static ToolBagTestAccountMainData LoadAccountMainData()
         {
@@ -15,7 +15,7 @@ namespace ToolBag.TestAccount
 
             if (string.IsNullOrEmpty(str))
             {
-                return new ToolBagTestAccountMainData("CTest");
+                return new ToolBagTestAccountMainData("TestAccount");
             }
 
             ToolBagTestAccountSaveData saveData = JsonUtility.FromJson<ToolBagTestAccountSaveData>(str);
