@@ -8,7 +8,7 @@ using System;
 
 namespace ToolBag.DataPrint
 {
-    public class ToolBagDataPrintWindow : ToolBagBaseData
+    public class ToolBagDataPrint : ToolBagBaseData
     {
         public override string Name
         {
@@ -74,6 +74,11 @@ namespace ToolBag.DataPrint
 
             GUILayout.Space(1);
 
+            if (treeView != null)
+            {
+                treeView.OnGUI(new Rect(0, 160, ToolBagDetailWindow.instance.position.width, ToolBagDetailWindow.instance.position.height - 160));
+            }
+            
             GUILayout.EndVertical();
         }
 

@@ -10,14 +10,26 @@ namespace ToolBag
     {
         private List<ToolBagBaseData> toolBagDataList;
         private ToolBagBaseData selectData;
+
+        public static ToolBagDetailWindow instance;
         
         public static void ShowWindow()
         {
+            if (instance != null)
+            {
+                return;
+            }
+            
             GetWindow(typeof(ToolBagDetailWindow), false, "ToolBagDetailWindow");
         }
 
         private void OnGUI()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            
             if (toolBagDataList == null)
             {
                 LoadData();
