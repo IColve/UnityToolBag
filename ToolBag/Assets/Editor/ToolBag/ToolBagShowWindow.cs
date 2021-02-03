@@ -50,14 +50,14 @@ namespace ToolBag
             
             if (!isShowList)
             {
-                if (GUILayout.Button("窗口面板"))
+                if (GUILayout.Button("详情"))
                 {
                     ToolBagDetailWindow.ShowWindow();
                 }
                 
                 GUILayout.Space(2);
                 
-                if (GUILayout.Button("打开编辑"))
+                if (GUILayout.Button("编辑面板"))
                 {
                     ToolBagManager.SaveToolDataStatus(new ToolSaveData("编辑面板", true));
                 }

@@ -11,7 +11,7 @@ namespace ToolBag
         {
             get
             {
-                return "时间转换";
+                return "时间戳转换";
             }
         }
 

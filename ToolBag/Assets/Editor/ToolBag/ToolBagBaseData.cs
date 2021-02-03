@@ -43,7 +43,15 @@ namespace ToolBag
         {
             get
             {
-                return (GetType().GetMethod("ShowWindow")?.DeclaringType != typeof(ToolBagBaseData));
+                return GetType().GetMethod("ShowWindow")?.DeclaringType != typeof(ToolBagBaseData);
+            }
+        }
+
+        public bool HasSimpleWindow
+        {
+            get
+            {
+                return GetType().GetMethod("ShowGUI")?.DeclaringType != typeof(ToolBagBaseData);
             }
         }
         

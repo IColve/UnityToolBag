@@ -47,7 +47,7 @@ namespace ToolBag
                 }
                 
                 GUILayout.Space(5);
-
+ 
                 if (selectData != null)
                 {
                     GUILayout.TextArea(selectData.Name, new GUIStyle("DefaultCenteredText"){fontStyle = FontStyle.Bold});

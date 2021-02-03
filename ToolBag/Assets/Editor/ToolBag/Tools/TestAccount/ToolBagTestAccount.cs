@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ToolBag
+namespace ToolBag.TestAccount
 {
     public class ToolBagTestAccount : ToolBagBaseData
     {

@@ -22,7 +22,7 @@ namespace ToolBag
         {
             if (toolBagDataList == null)
             {
-                toolBagDataList = ToolBagManager.GetToolBagDatas().FindAll(x => x.Name != Name);
+                toolBagDataList = ToolBagManager.GetToolBagDatas().FindAll(x => x.Name != Name && x.HasSimpleWindow);
             }
 
             for (int i = 0; i < toolBagDataList.Count; i++)
