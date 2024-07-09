@@ -15,7 +15,7 @@ public class ToolBagActionWindow : EditorWindow
             return;
         }
             
-        GetWindow(typeof(ToolBagActionWindow), false, "ToolBagDetailWindow");
+        GetWindow(typeof(ToolBagActionWindow), false, "ToolBagActionWindow");
     }
 
     private void OnGUI()
