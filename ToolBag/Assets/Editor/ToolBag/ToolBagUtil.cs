@@ -6,7 +6,7 @@ using System.Data;
 using System.IO;
 using ExcelDataReader;
 
-public class ToolBagUtil : MonoBehaviour
+public class ToolBagUtil
 {
     #region 打印代码行数
     private static string LF = @"\r?\n";//仅匹配换行
@@ -142,7 +142,7 @@ public class ToolBagUtil : MonoBehaviour
     /// <param name="tableIndex">table下标</param>
     /// <param name="tableAction">table事件</param>
     /// <param name="excelPath">excel路径，可不填，不填走选择逻辑</param>
-    private void ReadExcel(int tableIndex, Action<DataTable> tableAction, string excelPath = null)
+    public void ReadExcel(int tableIndex, Action<DataTable> tableAction, string excelPath = null)
     {
         string path = excelPath;
         
@@ -176,5 +176,18 @@ public class ToolBagUtil : MonoBehaviour
         tableAction?.Invoke(result.Tables[tableIndex]);
     }
     
+    #endregion
+
+    #region 复制文本至剪切版
+
+    /// <summary>
+    /// 复制文本至剪切版
+    /// </summary>
+    /// <param name="str"></param>
+    public void CopyStrToClipBoard(string str)
+    {
+        UnityEngine.GUIUtility.systemCopyBuffer = str;
+    }
+
     #endregion
 }
