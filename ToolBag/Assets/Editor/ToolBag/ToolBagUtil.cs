@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using System.Data;
+using System.IO;
+using ExcelDataReader;
 
 public class ToolBagUtil : MonoBehaviour
 {
@@ -129,6 +130,50 @@ public class ToolBagUtil : MonoBehaviour
     private static long Timestamp()
     {
         return (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000;
+    }
+    
+    #endregion
+
+    #region xlsx格式Excel加载
+
+    /// <summary>
+    /// Xlsx格式excel加载
+    /// </summary>
+    /// <param name="tableIndex">table下标</param>
+    /// <param name="tableAction">table事件</param>
+    /// <param name="excelPath">excel路径，可不填，不填走选择逻辑</param>
+    private void ReadExcel(int tableIndex, Action<DataTable> tableAction, string excelPath = null)
+    {
+        string path = excelPath;
+        
+        if (string.IsNullOrEmpty(excelPath) || !File.Exists(excelPath))
+        {
+            path = EditorUtility.OpenFilePanel("选择元素表",Application.dataPath , "xlsx");
+        }
+
+        if (string.IsNullOrEmpty(path))
+        {
+            return;
+        }
+
+        using var stream = File.Open(path, FileMode.Open, FileAccess.Read);
+        using var reader = ExcelReaderFactory.CreateReader(stream);
+        
+        var result = reader.AsDataSet(new ExcelDataSetConfiguration()
+        {
+            ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+            {
+                UseHeaderRow = true
+            }
+        });
+
+        if (result.Tables.Count <= tableIndex)
+        {
+            Debug.LogError("传入index越界");
+            return;
+        }
+                
+        tableAction?.Invoke(result.Tables[tableIndex]);
     }
     
     #endregion
